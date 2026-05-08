@@ -31,3 +31,10 @@ class Admin(User):
         employee = Employee(name,email,phone,address) # employee class object
         self.employees.append(employee)
         print(f'{name} is added!!')
+
+    def view_employee(self):
+        print("Employee list:\n")
+        for emp in self.employees:
+            print(emp.name, emp.email, emp.phone, emp.address)
+
+
