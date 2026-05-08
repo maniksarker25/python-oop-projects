@@ -10,10 +10,55 @@ class User(ABC):
         self.phone = phone
         self.email = email
         self.address = address
+
+class Customer:
+    def __init__(self, name, email,phone, address):
+        super().__init__(name, email, phone, address)
+        self.cart = None
+    
+    def view_menu(self,restaurant):
+        restaurant.menu.show_menu()
+    
+    def add_to_cart(self,restaurant,item_name):
+        item = restaurant.menu.find_item(item_name)
+        if item is not None:
+            pass
+        else:
+            print("Item not found")
+
+    def view_cart(self):
+        print("***View Cart***")
+        print("Name\tPrice\tQuantity")
+        for item,quantity in self.cart.items.items():
+            print(f'{item.name} {item.price} {quantity}')
+        print(f'Total price: {self.cart.total_price}')
+
+
+class Order:
+    def __init__(self):
+        self.items = {} # order items database
+    
+    def add_item(self,item):
+        if item in self.items:
+            self.items[item] += item.quantity
+        else:
+            self.items[item] = item.quantity
+        
+    def remove(self,item):
+        if item in self.items:
+            del self.items[item]
+
+    def total_price(self):
+        return sum(item.price * item.quantity for item, quantity in self.items.items())
+    
+    def clear(self):
+        self.items = {}
+    
+   
      
 class Employee(User):
     def __init__(self, name, email,phone, address,age,designation,salary):
-        super().__init__(name, phone, email, address)
+        super().__init__(name,email,phone, address)
         self.age = age
         self.designation = designation
         self.salary = salary
@@ -92,7 +137,10 @@ class FoodItem:
 
 
 
-mn = Menu()
-item = FoodItem("Pizza",12.45,10)
-mn.add_menu_item(item)
-mn.show_menu()
+# mn = Menu()
+# item = FoodItem("Pizza",12.45,10)
+# mn.add_menu_item(item)
+# mn.show_menu()
+
+cm = Customer("Manik","manik@gmail.com",23232,"dhaka")
+cm.view_menu()
