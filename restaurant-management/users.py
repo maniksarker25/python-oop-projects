@@ -32,11 +32,18 @@ class Admin(User):
     def view_employee(self,restaurant):
         restaurant.view_employee
 
+    def add_new_item(self,restaurant,item):
+        restaurant.menu.add_menu_item(item)
+    
+    def remove_item(self,restaurant,item):
+        restaurant.remove_item(item)
+
 
 class Restaurant:
     def __init__(self,name):
         self.name = name
         self.employees = [] # in memory database
+        self.menu = FoodItem()
 
     def add_empoloyee(self,employee):
         self.employees.append(employee)
@@ -69,10 +76,10 @@ class Menu:
             print("Item not found")
 
     def show_menu(self):
-        print("****MENU*****")
+        print("**** MENU ITEMS *****")
         print("Name\tPrice\tQuantity")
         for item in self.items:
-            print(f'${item.name}\t${item.price}\t${item.quantity}')
+            print(f'{item.name}\t{item.price}\t{item.quantity}')
 
 
 class FoodItem:
@@ -80,13 +87,12 @@ class FoodItem:
         self.name = name
         self.price = price
         self.quantity = quantity
-        
 
 
-ad = Admin("Admin","admin@gmail.com","93849384","Dhaka")
-ad.add_empoloyee("Sagor","sagor@gmail.com","9834983","Khulna",34,"Chef",12000)
 
-# ad.view_employee()
+
 
 mn = Menu()
-mn.add_menu_item()
+item = FoodItem("Pizza",12.45,10)
+mn.add_menu_item(item)
+mn.show_menu()
