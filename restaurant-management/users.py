@@ -68,8 +68,25 @@ class Menu:
         else:
             print("Item not found")
 
+    def show_menu(self):
+        print("****MENU*****")
+        print("Name\tPrice\tQuantity")
+        for item in self.items:
+            print(f'${item.name}\t${item.price}\t${item.quantity}')
+
+
+class FoodItem:
+    def __init__(self,name,price,quantity):
+        self.name = name
+        self.price = price
+        self.quantity = quantity
+        
+
 
 ad = Admin("Admin","admin@gmail.com","93849384","Dhaka")
 ad.add_empoloyee("Sagor","sagor@gmail.com","9834983","Khulna",34,"Chef",12000)
 
-ad.view_employee()
+# ad.view_employee()
+
+mn = Menu()
+mn.add_menu_item()
