@@ -21,7 +21,7 @@ class Customer(User):
     
     def add_to_cart(self,restaurant,item_name,quantity):
         item = restaurant.menu.find_item(item_name)
-        if item is not None:
+        if item:
             item.quantity = quantity
             self.cart.add_item(item)
             print("Item added")
@@ -33,7 +33,7 @@ class Customer(User):
         print("Name\tPrice\tQuantity")
         for item,quantity in self.cart.items.items():
             print(f'{item.name} {item.price} {quantity}')
-        print(f'Total price: {self.cart.total_price}')
+        print(f'Total price: {self.cart.total_price()}')
 
 
 class Order:
@@ -112,7 +112,7 @@ class Menu:
         for item in self.items:
             if item.name.lower() == item_name.lower():
                 return item
-            return None
+        return None
     
     def remove_item(self,item_name):
         item = self.find_item(item_name)
@@ -150,3 +150,8 @@ mn.show_menu()
 
 customer1 = Customer("Manik","manik@gmail.com",23232,"dhaka")
 customer1.view_menu(mamar_restaurant)
+
+item_name = input("Enter item name: ")
+item_quantity = int(input("Enter item quantity: "))
+customer1.add_to_cart(mamar_restaurant,item_name,item_quantity)
+customer1.view_cart()
