@@ -69,6 +69,9 @@ class Admin(User):
     def remove_item(self,restaurant,item):
         restaurant.remove_item(item)
 
+    def view_menu(self,restaurant):
+        restaurant.menu.show_menu()
+
 
 
      
