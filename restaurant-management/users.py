@@ -57,11 +57,11 @@ class Admin(User):
     def __init__(self, name, email,phone, address):
         super().__init__(name, phone, email, address)
 
-    def add_empoloyee(self,restaurant,employee):
+    def add_employee(self,restaurant,employee):
         restaurant.add_employee(employee)
 
     def view_employee(self,restaurant):
-        restaurant.view_employee
+        restaurant.view_employee()
 
     def add_new_item(self,restaurant,item):
         restaurant.menu.add_menu_item(item)

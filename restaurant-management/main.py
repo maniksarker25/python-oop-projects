@@ -74,8 +74,8 @@ def admin_menu():
              age = input("Enter employee age: ")
              salary = input("Enter employee salary: ")
              address = input("Enter employee address: ")
-            
-             admin.add_empoloyee(name, email,phone, address,age,designation,salary)
+             employee = Employee(name, email,phone, address,age,designation,salary)
+             admin.add_employee(mamar_restaurant,employee)
 
         elif choice == 3:
             admin.view_employee(mamar_restaurant)
@@ -88,3 +88,19 @@ def admin_menu():
             break
         else:
             print("Invalid choice!!")
+
+
+while True:
+    print("Welcome...")
+    print("1. Customer")
+    print("2. Admin")
+    print("3. Exit")
+    choice  = int(input("Enter your choice: "))
+    if choice == 1:
+        customer_menu()
+    elif choice == 2:
+        admin_menu()
+    elif choice == 3:
+        break
+    else:
+        print("Invalid input!!!!!!")
