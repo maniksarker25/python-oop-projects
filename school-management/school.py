@@ -60,3 +60,11 @@ class School:
             return 'D'
         else:
             return 'F'
+        
+    def __repr__(self):
+        # all classrooms
+        # all students
+        # all subjects
+        # all teachers
+        # all student results
+        
