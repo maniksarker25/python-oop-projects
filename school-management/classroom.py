@@ -13,8 +13,8 @@ class ClassRoom:
     def add_subject(self,subject):
         self.subjects.append(subject)
 
-    def take_semister_final_exam(self):
+    def take_semester_final_exam(self):
         for subject in self.subjects:
             subject.exam(self.students)
-        for student in self.subjects:
+        for student in self.students:
             student.calculate_final_grade()

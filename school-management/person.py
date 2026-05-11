@@ -24,12 +24,20 @@ class Student(Person):
 
     
     def calculate_final_grade(self):
-        sum = 0
-        for grade in self.subject_grade.values():
-            point = School.grade_to_value(grade) # 5.00
-            sum += point
-        gpa = sum / len(self.subject_grade) # 7/2 = 3.50
-        self.grade = School.value_to_grade(gpa)
+     total = 0
+ 
+     for grade in self.subject_grade.values():
+        point = School.grade_to_value(grade)
+        total += point
+
+     if total == 0:
+         gpa = 0.00
+         self.grade = 'F'
+     else: 
+         gpa = total / len(self.subject_grade)
+         self.grade = School.value_to_grade(gpa)
+     return (f'Final grade: {self.grade} with GPA: {gpa}')
+        
         
     @property
     def id(self):
