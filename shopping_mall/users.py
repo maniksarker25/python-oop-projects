@@ -15,3 +15,5 @@ class Customer(User):
 class Seller(User):
     def __init__(self, name, email, password):
         super().__init__(name, email, password)
+
+
