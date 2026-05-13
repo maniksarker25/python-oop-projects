@@ -20,5 +20,7 @@ class Ride:
         self.rider.wallet -= self.estimated_fare
         self.driver.wallet += self.estimated_fare
 
-        
+    
+    def __repr__(self):
+      return f'Ride details, Started {self.start_location} to {self.end_location}'
     
