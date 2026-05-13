@@ -11,3 +11,24 @@ class User(ABC):
     def display_profile(self):
         raise NotImplementedError
 
+
+class Rider(User):
+    def __init__(self, name, email, nid,current_location,initial_amount):
+        super().__init__(name, email, nid)
+        self.current_ride = None
+        self.wallet = initial_amount
+        self.current_location = current_location
+
+    def display_profile(self):
+        print(f"Rider: {self.name} , email : {self.email}")
+
+    
+    def load_cash(self,amount):
+        if amount > 0:
+            self.wallet += amount
+        
+        else:
+            print("Amount less then 0")
+    
+    def update_location(self,current_location):
+        self.current_location = current_location
