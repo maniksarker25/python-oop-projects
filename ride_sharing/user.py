@@ -53,5 +53,4 @@ class Driver(User):
 
 
     def accept_ride(self,ride):
-        # accept korbo
-        pass
+        ride.set_driver(self)
